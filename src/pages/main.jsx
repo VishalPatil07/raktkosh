@@ -9,6 +9,9 @@ import {
   AccountCircle, ExitToApp, ChevronLeft, ChevronRight, LocalHospital, LocalHospitalOutlined,
   WbSunny, Menu, Home, PostAdd, Brightness2, SupervisedUserCircleOutlined
 } from '@material-ui/icons';
+//import DeleteIcon from '@mui/icons-material/Delete';
+import CampaignIcon from '@mui/icons-material/Campaign';
+
 import useStyles from '../styles/pages/main';
 import { useDispatch, useSelector } from "react-redux";
 import { switchTheme } from '../redux/actions';
@@ -23,6 +26,7 @@ import BloodBankPage from './bloodbank';
 import BloodBankDetails from './bloodbankdetails';
 import AccountNotEnableDialog from '../components/account-enable-dialog';
 import ShowProfile from './showProfile';
+import CampPostTable from './camppost';
 
 const MainPage = () => {
   const classes = useStyles();
@@ -141,7 +145,8 @@ const MainPage = () => {
             {page: 'Home', link: "/home", component: <Home />},
             {page: 'Profile', link: `/profile/${userInfo.id}`, component: <AccountCircle />},
             {page: 'Post', link: "/post", component: <PostAdd />},
-            {page: 'Blood Bank', link: "/bloodbank", component: <LocalHospital />}
+            {page: 'Blood Bank', link: "/bloodbank", component: <LocalHospital />},
+            {page: 'Add Camp', link: "/camp", component: <CampaignIcon />}
           ].map((entry, index) => (
             <ListItem onClick={() => history.push(entry.link)} key={index} className={classes.links}>
               <ListItemIcon>{entry.component}</ListItemIcon>
@@ -182,6 +187,9 @@ const MainPage = () => {
         </Route>
         <Route path="/showProfile/:id">
           <ShowProfile />
+        </Route>
+        <Route path="/camp">
+          <CampPostTable />
         </Route>
         <Copyright className={classes.copyright}/>
       </main>

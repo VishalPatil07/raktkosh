@@ -3,21 +3,30 @@ import { DateRange } from "@material-ui/icons";
 import axios from '../../config/axios.config';
 import DeleteIcon from '@material-ui/icons/DeleteOutline';
 import useStyles from "../../styles/components/post";
-import { useState } from "react";
+
 import { Alert } from "@material-ui/lab";
+import { render } from "react-dom";
+import React, { useState, useEffect } from 'react';
+
 // import { Link as RLink } from 'react-router-dom';
 
 const ProfilePost = ({ deletable, antigen, createdOn, id, postCategory, type, userId }) => {
   const classes = useStyles();
-
+  
   const [response, handleResponse] = useState({
     open: false
   });
+ 
+  const [isVis, setIsVis] = useState(true);
+
+//  useEffect(()=>{},[])
 
   const deletePost = (postID) => {
+    
     axios.delete(`/post/delete/${postID}`)
       .then(res => {
         handleResponse({ open: true, severity: "success", message: "Post Delete Successfully" });
+        // render();
       })
       .catch(err => {
         handleResponse({ open: true, severity: "error", message: "Post Deletion Failed" });
@@ -26,12 +35,11 @@ const ProfilePost = ({ deletable, antigen, createdOn, id, postCategory, type, us
 
   return (
     <>
-      <Snackbar open={response.open} autoHideDuration={6000} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
+      {isVis && (<><Snackbar open={response.open} autoHideDuration={6000} anchorOrigin={{ vertical: 'top', horizontal: 'right' }}>
         <Alert severity={response.severity}>
           {response.message}
         </Alert>
       </Snackbar>
-      {/* <Link component={RLink} to={`/showProfile/${userId.id}`}> */}
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom component="h3">
@@ -40,9 +48,7 @@ const ProfilePost = ({ deletable, antigen, createdOn, id, postCategory, type, us
           <Typography variant="h5" component="h2" className={classes.typo}>
             {postCategory === "DONOR" ? "Available" : "Looging"} for {type}{antigen === "POSITIVE" ? "+" : "-"} blood
           </Typography>
-          {/* <Typography variant="body2" component="p" className={classes.typo}>
-            Near Panchavati, Pashan, Pune, Maharashtra.
-          </Typography> */}
+          
           <Divider />
           <Typography variant="body2" component="p" className={classes.typo}>
             <DateRange fontSize="small" /> &nbsp; {createdOn.replace("T", " at ")}
@@ -51,14 +57,19 @@ const ProfilePost = ({ deletable, antigen, createdOn, id, postCategory, type, us
         <CardActions>
           {
             deletable && (
-              <IconButton aria-label="delete" className={classes.delete} onClick={() => deletePost(id)}>
+              <IconButton aria-label="delete" className={classes.delete} onClick={() => 
+                {deletePost(id);
+                setInterval(()=>{setIsVis(false)},3000)
+              }} >
+
                 <DeleteIcon />
               </IconButton>
             )
           } 
         </CardActions>
       </Card>
-      {/* </Link> */}
+      </>
+      )}
     </>
   );
 };

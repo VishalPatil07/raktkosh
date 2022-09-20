@@ -171,7 +171,7 @@ import { Link as RLink } from 'react-router-dom';
 
 // state,district,locality,city,zip
 
-const Post = ({ antigen, createdOn, postCategory, type, userId, }) => {
+const Post = ({ antigen, createdOn, postCategory, type, userId,state, district,city,locality,zip }) => {
   //const [useraddress,setAddress] = useState();
   // console.log(city)
   // console.log(antigen)
@@ -211,9 +211,12 @@ const Post = ({ antigen, createdOn, postCategory, type, userId, }) => {
             Near Panchavati, Pashan, Pune, Maharashtra.
           </Typography> */}
           {/* <Typography variant="body2" component="p" className={classes.typo}>
-              {state},{district},{city},{zip},{locality}
+              {state}
               Near Panchavati, Pashan, Pune, Maharashtra.
             </Typography>  */}
+            <Typography className={classes.title} color="textSecondary" gutterBottom component="h3">
+            {state},{district},{city},{locality},{zip}
+          </Typography>
           <Divider />
           <Typography variant="body2" component="p" className={classes.typo}>
             <DateRange fontSize="small" /> &nbsp; {createdOn.replace("T", " at ")}
