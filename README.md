@@ -19,8 +19,7 @@ Raktkosh is an online platform that allows blood receivers to find and contact d
 
 ---
 Developed with ❤️️ by
-  - Charu Tayal
-  - Rutuja Dighe
-  - Upender Yadav
-  - Dhananjay Andhale
-  - Anshuman Gupta
+  - Ajay Andhale
+  - Vinay Patil
+  - Vishal Patil
+  
