@@ -24,14 +24,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.raktkosh.dao.BankRepository;
+import com.raktkosh.dao.IBDCampRepo;
 import com.raktkosh.dao.UserRepository;
+import com.raktkosh.dto.MessageResponse;
+import com.raktkosh.dto.SigninDTO;
+import com.raktkosh.dto.SignupDTO;
 import com.raktkosh.enums.Role;
+import com.raktkosh.pojos.BDCamp;
 import com.raktkosh.pojos.BloodBank;
 import com.raktkosh.pojos.User;
-import com.raktkosh.request.dto.SigninDTO;
-import com.raktkosh.request.dto.SignupDTO;
-import com.raktkosh.response.dto.MessageResponse;
 import com.raktkosh.security.UserDetailsImpl;
+import com.raktkosh.services.IBDCampService;
 import com.raktkosh.services.IVerificationService;
 import com.raktkosh.services.UserDetailsServiceImpl;
 import com.raktkosh.utils.JWTUtils;
@@ -42,6 +45,9 @@ import com.raktkosh.utils.JWTUtils;
 public class AccountController {
   
   private static final Logger logger = LoggerFactory.getLogger(AccountController.class);
+  
+  @Autowired
+  private IBDCampService campService;
 
   @Autowired
   private AuthenticationManager authenticationManager;
@@ -60,6 +66,9 @@ public class AccountController {
   
   @Autowired
   private BankRepository bankRepo;
+  
+  @Autowired
+  private IBDCampRepo campRepo;
   
   @Autowired
   private IVerificationService verification;
@@ -83,9 +92,17 @@ public class AccountController {
 
     if(signupRequest.getRole().equals("BLOOD_BANK")) {
     	BloodBank bank = mapper.map(signupRequest, BloodBank.class);
-    	bank.setRegID(use.getId().toString());
+    	//bank.setRegID(use.getId().toString());
+    	bank.setUserId(use.getId());
     	bankRepo.save(bank);
     }
+    if(signupRequest.getRole().equals("CAMP")) {
+    	BDCamp camp = mapper.map(signupRequest, BDCamp.class);
+    	camp.setUserId(use.getId());
+    	//camp.setId(null);
+    	campRepo.save(camp);
+    }
+    
     //User user = User.build(signupRequest);
     //user.setRole(Role.USER);
 

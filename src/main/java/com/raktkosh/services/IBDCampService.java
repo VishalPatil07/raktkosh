@@ -2,17 +2,19 @@ package com.raktkosh.services;
 
 import java.util.List;
 
+import com.raktkosh.dto.BDCampDto;
 import com.raktkosh.pojos.BDCamp;
-import com.raktkosh.request.dto.BDCampDto;
 
 public interface IBDCampService {
 
 	List<BDCampDto> getAllCamps();
 
-	BDCamp saveCamp(BDCamp camp);
+	BDCamp saveCamp(BDCampDto dto);
 
 	boolean deleteCampById(Long id);
 
 	BDCamp updateCampById(Long id, BDCamp camp);
+
+	boolean registerUserForCamp(Long id, Long campid);
 
 }

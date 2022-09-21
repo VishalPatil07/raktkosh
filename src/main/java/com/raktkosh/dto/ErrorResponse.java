@@ -1,4 +1,6 @@
-package com.raktkosh.request.dto;
+package com.raktkosh.dto;
+
+import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,6 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class BloodBankRepositoryDTO extends BloodBankRepositoryIdDTO {
-  private int availability;
+public class ErrorResponse {
+  private String message;
+  private LocalDateTime timestamp;
 }

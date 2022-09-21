@@ -12,5 +12,7 @@ public interface UserAddressRepository extends JpaRepository<UserAddress, Long>{
 //	@Query("select p.users_address.* from Post p join fetch p.user.address where p.userId=users_address.userId ")
 	@Query(value = "select users_address.* from post join users_address where post.user_id = users_address.user_id", nativeQuery = true)
 	List<UserAddress> getAddAddressByPost();
+	@Query(value="select users_address.* from bd_camp join users_address where users_address.user_id= bd_camp.user_id and date > curdate();", nativeQuery = true)
+	List<UserAddress> getAddressForBDCamp();
 //	
 }

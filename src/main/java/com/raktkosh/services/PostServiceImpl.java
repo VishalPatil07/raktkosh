@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import com.raktkosh.dao.UserAddressRepository;
 import com.raktkosh.dao.UserPostRepository;
 import com.raktkosh.dao.UserRepository;
+import com.raktkosh.dto.PostAddDto;
 import com.raktkosh.enums.Antigens;
 import com.raktkosh.enums.BloodTypes;
 import com.raktkosh.enums.PostCategory;
@@ -21,7 +22,6 @@ import com.raktkosh.exceptions.ResourceNotFoundException;
 import com.raktkosh.pojos.Post;
 import com.raktkosh.pojos.User;
 import com.raktkosh.pojos.UserAddress;
-import com.raktkosh.response.dto.PostAddDto;
 
 @Service
 @Transactional

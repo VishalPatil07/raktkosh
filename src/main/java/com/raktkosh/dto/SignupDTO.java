@@ -1,4 +1,4 @@
-package com.raktkosh.request.dto;
+package com.raktkosh.dto;
 
 import java.time.LocalDate;
 
@@ -15,8 +15,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class SignupDTO extends SigninDTO {
-  @NotBlank(message = "Fullname is required.")
+public class SignupDTO extends SigninDTO{
+  @NotBlank(message = "name is required.")
   private String name;
   
   @NotBlank(message = "Valid email is required.")

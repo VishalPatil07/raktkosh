@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.springframework.data.domain.Sort;
 
+import com.raktkosh.dto.PostAddDto;
 import com.raktkosh.enums.Antigens;
 import com.raktkosh.enums.BloodTypes;
 import com.raktkosh.enums.PostCategory;
 import com.raktkosh.pojos.Post;
 import com.raktkosh.pojos.UserAddress;
-import com.raktkosh.response.dto.PostAddDto;
 
 public interface IPostService {
 

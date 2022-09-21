@@ -10,12 +10,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.raktkosh.dao.BloodBankRepository;
+import com.raktkosh.dto.BloodBankRepositoryDTO;
+import com.raktkosh.dto.BloodBankRepositoryIdDTO;
 import com.raktkosh.exceptions.BloodRepositoryException;
 import com.raktkosh.pojos.BloodBank;
 import com.raktkosh.pojos.BloodRepository;
 import com.raktkosh.pojos.BloodRepositoryID;
-import com.raktkosh.request.dto.BloodBankRepositoryDTO;
-import com.raktkosh.request.dto.BloodBankRepositoryIdDTO;
 
 @Service
 @Transactional

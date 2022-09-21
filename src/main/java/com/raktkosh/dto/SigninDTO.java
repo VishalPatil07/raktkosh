@@ -1,4 +1,4 @@
-package com.raktkosh.request.dto;
+package com.raktkosh.dto;
 
 import javax.validation.constraints.NotBlank;
 

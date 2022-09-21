@@ -30,6 +30,9 @@ public class BloodBank extends BaseEntity {
   @Column(length = 30, nullable = false, unique = true)
   private String regID;
   
+  @Column(name="uid")
+  private Long userId;
+  
   @Column(length = 50, nullable = false)
   private String name;
   
@@ -40,6 +43,7 @@ public class BloodBank extends BaseEntity {
   @Column(length = 10)
   private String mobile;
   
+  
   @DateTimeFormat(pattern = "hh:mm:ss a")
   private LocalTime openAt;
   
@@ -49,6 +53,6 @@ public class BloodBank extends BaseEntity {
   @Column(insertable = false, updatable = false, columnDefinition = "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP", name = "registered_on")
   private LocalDateTime registerdOn;
   
-  @OneToOne(mappedBy = "bank", cascade = CascadeType.ALL)
-  private BankAddress address;
+//  @OneToOne(mappedBy = "bank", cascade = CascadeType.ALL)
+//  private UserAddress address;
 }

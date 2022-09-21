@@ -4,5 +4,6 @@ public enum Role {
   USER,
   ADMIN,
   BLOOD_BANK,
+  CAMP
  
 }

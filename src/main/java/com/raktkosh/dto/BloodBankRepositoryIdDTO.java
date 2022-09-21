@@ -1,4 +1,4 @@
-package com.raktkosh.request.dto;
+package com.raktkosh.dto;
 
 import com.raktkosh.enums.Antigens;
 import com.raktkosh.enums.BloodTypes;

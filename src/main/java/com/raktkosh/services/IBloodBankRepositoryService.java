@@ -2,9 +2,9 @@ package com.raktkosh.services;
 
 import java.util.List;
 
+import com.raktkosh.dto.BloodBankRepositoryDTO;
+import com.raktkosh.dto.BloodBankRepositoryIdDTO;
 import com.raktkosh.pojos.BloodRepository;
-import com.raktkosh.request.dto.BloodBankRepositoryDTO;
-import com.raktkosh.request.dto.BloodBankRepositoryIdDTO;
 
 public interface IBloodBankRepositoryService {
   /**

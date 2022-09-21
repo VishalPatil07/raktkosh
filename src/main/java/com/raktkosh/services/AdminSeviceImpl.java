@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 
 import com.raktkosh.dao.AdminRepository;
 import com.raktkosh.dao.UserRepository;
+import com.raktkosh.dto.BloodBankRepositoryIdDTO;
 import com.raktkosh.enums.Role;
 import com.raktkosh.exceptions.AdminException;
 import com.raktkosh.exceptions.BloodRepositoryException;
 import com.raktkosh.pojos.BloodRepository;
 import com.raktkosh.pojos.BloodRepositoryID;
 import com.raktkosh.pojos.User;
-import com.raktkosh.request.dto.BloodBankRepositoryIdDTO;
 
 @Service
 @Transactional

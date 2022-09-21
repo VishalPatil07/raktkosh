@@ -1,5 +1,6 @@
 package com.raktkosh.pojos;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
@@ -21,7 +22,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-//@ToString(exclude = "user")
+@ToString(exclude = "user")
 public class UserAddress extends Address {
   
   @OneToOne

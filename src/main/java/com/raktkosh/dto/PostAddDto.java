@@ -1,4 +1,4 @@
-package com.raktkosh.response.dto;
+package com.raktkosh.dto;
 
 
 import java.time.LocalDateTime;

@@ -5,7 +5,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.raktkosh.request.dto.BloodBankRepositoryDTO;
+import com.raktkosh.dto.BloodBankRepositoryDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

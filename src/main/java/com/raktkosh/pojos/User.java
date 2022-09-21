@@ -18,10 +18,10 @@ import javax.validation.constraints.Pattern;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.raktkosh.dto.SignupDTO;
 import com.raktkosh.enums.Antigens;
 import com.raktkosh.enums.BloodTypes;
 import com.raktkosh.enums.Role;
-import com.raktkosh.request.dto.SignupDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,7 +35,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
+@ToString(exclude="address")
 public class User extends BaseEntity {
   
   @Column(unique = true, length = 20, nullable = false)
@@ -72,26 +72,22 @@ public class User extends BaseEntity {
   
   @Column(insertable = false, updatable = false, columnDefinition = "DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP", name = "registered_on")
   private LocalDateTime registerdOn;
-  
-  @OneToOne(mappedBy = "user")
+ 
+  @OneToOne(mappedBy = "user",  cascade = CascadeType.ALL)
   @JsonIgnore
   private UserAddress address;
   
   @Column(insertable = false, columnDefinition = "TINYINT NOT NULL DEFAULT 0")
   private boolean activated;
-
+  
+  @Column(name="recent_donation_date")
+  private LocalDate donationDate;
+  
+  
   @JsonIgnore
   @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
   private List<Post> userId;
 
-//  public static User build(@Valid SignupDTO signupRequest) {
-//    User user = new User();
-//    user.setUsername(signupRequest.getUsername());
-//    user.setPassword(signupRequest.getPassword());
-//    user.setFullname(signupRequest.getFullname());
-//    user.setEmail(signupRequest.getEmail());
-//    user.setDob(signupRequest.getDob());
-//    return user;
-//  }
+
 
 }

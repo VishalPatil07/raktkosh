@@ -4,14 +4,16 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.raktkosh.dao.BankAddressRepository;
 import com.raktkosh.dao.BankRepository;
-import com.raktkosh.pojos.BankAddress;
+import com.raktkosh.dao.UserAddressRepository;
+import com.raktkosh.dto.BloodBankDTO;
 import com.raktkosh.pojos.BloodBank;
-import com.raktkosh.request.dto.BloodBankDTO;
+import com.raktkosh.pojos.User;
+import com.raktkosh.pojos.UserAddress;
 
 @Service
 @Transactional
@@ -20,17 +22,29 @@ public class BloodBankServiceImpl implements IBloodBankService {
 	@Autowired
 	private BankRepository bankRepo;
 	
+//	@Autowired
+//	private BankAddressRepository addRepo;
 	@Autowired
-	private BankAddressRepository addRepo;
+	private UserAddressRepository addRepo;
+	
+	@Autowired
+	private ModelMapper mapper;
 
 	// add blood bank
 	@Override
 	public BloodBank saveBankDetails(BloodBankDTO bloodBank) {
 
-		BloodBank bank = bankRepo.save(bloodBank.buildBloodBank());
-		BankAddress address = bloodBank.buildBankAddress();
-		address.setBank(bank);
-		addRepo.save(address);
+	
+				//bankRepo.save(bloodBank.buildBloodBank());
+		User user = mapper.map(bloodBank, User.class);
+		UserAddress address = mapper.map(bloodBank, UserAddress.class);
+		BloodBank bank = mapper.map(bloodBank, BloodBank.class);
+		
+		address.setUser(user);
+		
+		//bloodBank.buildBankAddress();
+		//address.setBank(bank);
+		//addRepo.save(address);
 		return bank;
 	}
 

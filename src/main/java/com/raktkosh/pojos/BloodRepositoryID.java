@@ -9,9 +9,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.raktkosh.dto.BloodBankRepositoryIdDTO;
 import com.raktkosh.enums.Antigens;
 import com.raktkosh.enums.BloodTypes;
-import com.raktkosh.request.dto.BloodBankRepositoryIdDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;

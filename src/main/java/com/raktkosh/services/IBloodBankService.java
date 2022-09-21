@@ -2,8 +2,8 @@ package com.raktkosh.services;
 
 import java.util.List;
 
+import com.raktkosh.dto.BloodBankDTO;
 import com.raktkosh.pojos.BloodBank;
-import com.raktkosh.request.dto.BloodBankDTO;
 
 public interface IBloodBankService {
 	BloodBank saveBankDetails(BloodBankDTO bloodBank);

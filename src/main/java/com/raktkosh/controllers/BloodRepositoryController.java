@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.raktkosh.request.dto.BloodBankRepositoryDTO;
-import com.raktkosh.request.dto.BloodBankRepositoryIdDTO;
+import com.raktkosh.dto.BloodBankRepositoryDTO;
+import com.raktkosh.dto.BloodBankRepositoryIdDTO;
 import com.raktkosh.services.IBloodBankRepositoryService;
 
 @RestController

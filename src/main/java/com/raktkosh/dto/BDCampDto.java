@@ -1,4 +1,4 @@
-package com.raktkosh.request.dto;
+package com.raktkosh.dto;
 
 import java.time.LocalDate;
 
@@ -16,24 +16,24 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 
-public class BDCampDto {
+public class BDCampDto extends SignupDTO{
 	private Long id;
 	@NotBlank
 	private String name;
-	@NotBlank
+//	@NotBlank
 	@Future
 	private LocalDate campDate;
-	@NotBlank
+	//@NotBlank
 	private String city;
-	@NotBlank
+	//@NotBlank
 	private String locality;
-	@NotBlank
+	//@NotBlank
 	private String district;
-	@NotBlank
-	private String zipcode;
-	@NotBlank
+//	@NotBlank
+	private String zip;
+	//@NotBlank
 	private String startTime;
-	@NotBlank
+//	@NotBlank
 	private String endTime;
 	
 }

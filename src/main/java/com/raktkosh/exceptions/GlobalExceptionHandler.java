@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import com.raktkosh.response.dto.ApiResponse;
-import com.raktkosh.response.dto.ErrorResponse;
+import com.raktkosh.dto.ApiResponse;
+import com.raktkosh.dto.ErrorResponse;
 
 /**
  * Centralize Exception Handler.
