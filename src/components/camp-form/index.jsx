@@ -118,6 +118,57 @@ const CampForm = props => {
               helperText={errors.name}
             />
           </Grid>
+          <Grid item xs={6}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="email"
+              name="email"
+              label="Email"
+              type="email"
+              fullWidth
+              value={form?.email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.email !== undefined}
+              helperText={errors.email}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="username"
+              name="username"
+              label="UserName"
+              type="text"
+              fullWidth
+              value={form?.username}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.username !== undefined}
+              helperText={errors.username}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="password"
+              name="password"
+              label="Password"
+              type="text"
+              fullWidth
+              value={form?.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.password !== undefined}
+              helperText={errors.password}
+            />
+          </Grid>
 
           <Grid item xs={12}>
           <TextField
@@ -240,18 +291,19 @@ const CampForm = props => {
               variant="outlined"
               margin="normal"
               required
-              id="zipcode"
-              name="zipcode"
+              id="zip"
+              name="zip"
               label="Pin Code"
               type="text"
               fullWidth
-              value={form?.zipcode}
+              value={form?.zip}
               onChange={handleChange}
               onBlur={handleBlur}
               error={errors.zip !== undefined}
-              helperText={errors.zipcode}
+              helperText={errors.zip}
             />
           </Grid>
+          
         </Grid>
 
 

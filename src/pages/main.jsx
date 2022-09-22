@@ -27,7 +27,10 @@ import BloodBankDetails from './bloodbankdetails';
 import AccountNotEnableDialog from '../components/account-enable-dialog';
 import ShowProfile from './showProfile';
 import CampPostTable from './camppost';
-
+import GroupsIcon from '@mui/icons-material/Groups';
+import InfoIcon from '@mui/icons-material/Info';
+import ContactUs from './contactus';
+import AboutUs from './aboutus';
 const MainPage = () => {
   const classes = useStyles();
   const theme = useTheme();
@@ -42,6 +45,28 @@ const MainPage = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  const pages = [
+    {pagename: 'Home', link: "/home", component: <Home />},
+    {pagename: 'Profile', link: `/profile/${userInfo.id}`, component: <AccountCircle />},
+   //{pagename: 'Profile', link: `/info/${localStorage.getItem("token")}`, component: <AccountCircle />},
+    {pagename: 'Post', link: "/post", component: <PostAdd />},
+    {pagename: 'Blood Bank', link: "/bloodbank", component: <LocalHospital />},
+    
+    {pagename: 'Add Camp', link: "/camp", component: <CampaignIcon />},
+    {pagename: 'About Us', link: "/about", component: <InfoIcon />},
+    {pagename: 'Contact Us', link: "/contact", component: <GroupsIcon />}
+  ]
+
+  const filterpage = pages.filter(
+    function(page){
+      if(userInfo.authority==="BLOOD_BANK"||userInfo.authority==="CAMP"){
+        if(page.pagename==="Post"){
+          return null;
+        }
+      }
+      return page;
+    }
+  )
 
   const history = useHistory();
 
@@ -141,17 +166,25 @@ const MainPage = () => {
         </div>
         <Divider />
         <List>
-          {[
-            {page: 'Home', link: "/home", component: <Home />},
-            {page: 'Profile', link: `/profile/${userInfo.id}`, component: <AccountCircle />},
-            {page: 'Post', link: "/post", component: <PostAdd />},
-            {page: 'Blood Bank', link: "/bloodbank", component: <LocalHospital />},
-            {page: 'Add Camp', link: "/camp", component: <CampaignIcon />}
+          {/* {[
+            {pagename: 'Home', link: "/home", component: <Home />},
+            {pagename: 'Profile', link: `/profile/${userInfo.id}`, component: <AccountCircle />},
+
+            {pagename: 'Post', link: "/post", component: <PostAdd />},
+            {pagename: 'Blood Bank', link: "/bloodbank", component: <LocalHospital />},
+            
+            {pagename: 'Add Camp', link: "/camp", component: <CampaignIcon />}
           ].map((entry, index) => (
             <ListItem onClick={() => history.push(entry.link)} key={index} className={classes.links}>
               <ListItemIcon>{entry.component}</ListItemIcon>
-              <ListItemText primary={entry.page} />
+              <ListItemText primary={entry.pagename} />
             </ListItem>
+          ))} */}
+          {filterpage.map((entry,index)=>(
+             <ListItem onClick={() => history.push(entry.link)} key={index} className={classes.links}>
+             <ListItemIcon>{entry.component}</ListItemIcon>
+             <ListItemText primary={entry.pagename} />
+           </ListItem>
           ))}
         </List>
         <Divider />
@@ -176,6 +209,9 @@ const MainPage = () => {
         <Route path="/profile/:id">
           <ProfilePage />
         </Route>
+        {/* <Route path="/info/:token">
+          <ProfilePage />
+        </Route> */}
         <Route path="/post">
           <PostPage />
         </Route>
@@ -190,6 +226,12 @@ const MainPage = () => {
         </Route>
         <Route path="/camp">
           <CampPostTable />
+        </Route>
+        <Route path="/contact">
+          <ContactUs />
+        </Route>
+        <Route path="/about">
+          <AboutUs />
         </Route>
         <Copyright className={classes.copyright}/>
       </main>

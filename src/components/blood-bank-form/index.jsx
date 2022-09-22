@@ -98,6 +98,41 @@ const BloodBankForm = props => {
               helperText={errors.regID}
             />
           </Grid>
+
+          <Grid item xs={6}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="username"
+              name="username"
+              label="UserName"
+              type="text"
+              fullWidth
+              value={form?.username}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.username !== undefined}
+              helperText={errors.username}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              id="password"
+              name="password"
+              label="Password"
+              type="text"
+              fullWidth
+              value={form?.password}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              error={errors.password !== undefined}
+              helperText={errors.password}
+            />
+          </Grid>
           <Grid item xs={6}>
             <TextField
               variant="outlined"

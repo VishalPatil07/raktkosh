@@ -433,7 +433,25 @@ const SignupPage = (props) => {
               error={errors.fullname !== undefined}
               helperText={errors.fullname}
             />)} */}
-
+ {(form.role === "BLOOD_BANK") && (<TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="regID"
+              id="regID"
+              label="RegId"
+              type="text"
+              className={classes.textField}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              value={form?.regID}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              // error={errors.dob !== undefined}
+              // helperText={errors.dob}
+            />)}
 
 
 

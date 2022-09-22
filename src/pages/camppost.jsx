@@ -116,15 +116,15 @@ const CampPostTable = (props) => {
         <Table className={classes.table} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Reg. ID</TableCell>
-              <TableCell align="right">Name</TableCell>
-              <TableCell align="right">Date</TableCell>
-              <TableCell align="right">Locality</TableCell>
-              <TableCell align="right">City</TableCell>
-              <TableCell align="right">District</TableCell>
-              <TableCell align="right">Zipcode</TableCell>
-              <TableCell align="right">Open At</TableCell>
-              <TableCell align="right">Close At</TableCell>
+              {/* <TableCell>Reg. ID</TableCell> */}
+              <TableCell align="center">Name</TableCell>
+              <TableCell align="center">Date</TableCell>
+              <TableCell align="center">Locality</TableCell>
+              <TableCell align="center">City</TableCell>
+              <TableCell align="center">District</TableCell>
+              <TableCell align="center">Zipcode</TableCell>
+              <TableCell align="center">Open At</TableCell>
+              <TableCell align="center">Close At</TableCell>
               {(userInfo.authority === "ADMIN") && (
                 <TableCell align="right">Delete</TableCell>
               )}
@@ -139,17 +139,17 @@ const CampPostTable = (props) => {
                       {row.regID}
                     </Link>
                   </TableCell> */}
-                  <TableCell align="right">{row.name}</TableCell>
-                  <TableCell align="right">{row.campDate}</TableCell>
-                  <TableCell align="right">{row.locality}</TableCell>
-                  <TableCell align="right">{row.city}</TableCell>
-                  <TableCell align="right">{row.district}</TableCell>
-                  <TableCell align="right">{row.zipcode}</TableCell>
-                  <TableCell align="right">{row.openAt}</TableCell>
-                  <TableCell align="right">{row.closeAt}</TableCell>
+                  <TableCell align="center">{row.name}</TableCell>
+                  <TableCell align="center">{row.campDate}</TableCell>
+                  <TableCell align="center">{row.locality}</TableCell>
+                  <TableCell align="center">{row.city}</TableCell>
+                  <TableCell align="center">{row.district}</TableCell>
+                  <TableCell align="center">{row.zip}</TableCell>
+                  <TableCell align="center">{row.startTime}</TableCell>
+                  <TableCell align="center">{row.endTime}</TableCell>
                   {(userInfo.authority === "ADMIN"
         ) && (
-                    <TableCell align="center">
+                    <TableCell align="right">
                       <IconButton
                         aria-label="delete"
                         color="secondary"

@@ -205,7 +205,7 @@ const Post = ({ antigen, createdOn, postCategory, type, userId,state, district,c
             {userId.name}
           </Typography>
           <Typography variant="h5" component="h2" className={classes.typo}>
-            {postCategory === "DONOR" ? "Available" : "Looging"} for {type}{antigen === "POSITIVE" ? "+" : "-"} blood
+            {postCategory === "DONOR" ? "Available" : "Looking"} for {type}{antigen === "POSITIVE" ? "+" : "-"} blood
           </Typography>
           {/* <Typography variant="body2" component="p" className={classes.typo}>
             Near Panchavati, Pashan, Pune, Maharashtra.

@@ -229,12 +229,14 @@ import { Alert } from "@material-ui/lab";
 import { useState, forwardRef, useEffect } from 'react';
 import axios from "../../config/axios.config";
 import useStyles from "../../styles/components/blood-bank-form";
+import { useSelector } from "react-redux";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const PostEditForm = props => {
+  const userInfo = useSelector(store => store.user);
   const classes = useStyles();
   const [form, handleForm] = useState({});
   const [errors, handleErrors] = useState({});
@@ -310,16 +312,16 @@ const PostEditForm = props => {
               variant="outlined"
               margin="normal"
               required
-              id="fullname"
-              name="fullname"
+              id="name"
+              name="name"
               label="Fullname"
               type="text"
               fullWidth
-              value={form?.fullname}
+              value={form?.name}
               onChange={handleChange}
               onBlur={handleBlur}
-              error={errors.fullname !== undefined}
-              helperText={errors.fullname}
+              error={errors.name !== undefined}
+              helperText={errors.name}
             />
           </Grid>
           <Grid item xs={6}>
@@ -373,33 +375,38 @@ const PostEditForm = props => {
               helperText={errors.mobile}
             />
           </Grid>
-          <Grid item xs={6}>
-            <FormControl variant="outlined" fullWidth className={classes.formControl}>
-              <InputLabel id="blood-type">Blood Type</InputLabel>
-              <Select
-                labelId="blood-type"
-                 id="blood-type-select"
-                // id="bloodType"
-                label="Blood Type"
-                //name="type"
-                name="bloodType"
-                value={form?.type}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                error={errors?.type}
-              >
-                <MenuItem value=" ">
-                  <em>None</em>
-                </MenuItem>
-                {
-                  ["O", "A", "B", "AB"].map((type, idx) => (
-                    <MenuItem value={type} key={idx}>{type}</MenuItem>
-                  ))
-                }
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item xs={6}>
+          {((userInfo.authority === "ADMIN"|| userInfo.authority==="USER")&&
+           <Grid item xs={6}>
+           <FormControl variant="outlined" fullWidth className={classes.formControl}>
+             <InputLabel id="blood-type">Blood Type</InputLabel>
+             <Select
+               labelId="blood-type"
+                id="blood-type-select"
+               // id="bloodType"
+               label="Blood Type"
+               //name="type"
+               name="bloodType"
+               value={form?.type}
+               onChange={handleChange}
+               onBlur={handleBlur}
+               error={errors?.type}
+             >
+               <MenuItem value=" ">
+                 <em>None</em>
+               </MenuItem>
+               {
+                 ["O", "A", "B", "AB"].map((type, idx) => (
+                   <MenuItem value={type} key={idx}>{type}</MenuItem>
+                 ))
+               }
+             </Select>
+           </FormControl>
+         </Grid>
+          )}
+
+         
+          {((userInfo.authority === "ADMIN"|| userInfo.authority==="USER")&&
+            <Grid item xs={6}>
             <FormControl variant="outlined" fullWidth className={classes.formControl}>
               <InputLabel id="antigen-type">Antigen Type</InputLabel>
               <Select
@@ -423,6 +430,8 @@ const PostEditForm = props => {
               </Select>
             </FormControl>
           </Grid>
+            )}
+          
         </Grid>
       </DialogContent>
       <DialogActions>
