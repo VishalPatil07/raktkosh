@@ -28,7 +28,7 @@ public class BDCamp extends BaseEntity {
 	private String name;
 	@Column(name = "date", nullable = false)
 	private LocalDate campDate;
-
+   
 	@Column(name = "user_id")
 	private Long userId;
 //@Column(name="city",nullable = false)

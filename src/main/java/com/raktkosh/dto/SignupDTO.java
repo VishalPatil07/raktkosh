@@ -18,7 +18,7 @@ import lombok.ToString;
 public class SignupDTO extends SigninDTO{
   @NotBlank(message = "name is required.")
   private String name;
-  
+  private String regID;
   @NotBlank(message = "Valid email is required.")
   private String email;
   

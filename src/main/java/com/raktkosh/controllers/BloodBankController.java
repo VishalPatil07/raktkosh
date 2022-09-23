@@ -60,7 +60,7 @@ public class BloodBankController {
   public ResponseEntity<?> getBanksDetails(@PathVariable Long id) {
     return ResponseEntity.ok(bankService.getBankDetailsById(id));
   }
-  
+   
   @PostMapping("/add")
   public ResponseEntity<?> addBanks(@RequestBody @Valid BloodBankDTO dto) {
 //    return ResponseEntity.ok(bankService.saveBankDetails(bank));

@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BloodBankDTO extends SignupDTO {
-  private String regID;
+ 
   //private String name;
  // private String email;
   private String mobile;
