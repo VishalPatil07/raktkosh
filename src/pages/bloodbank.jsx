@@ -257,6 +257,9 @@ const BloodBankPage = (props) => {
                     <Link to={`/bloodbank/${row.id}`} component={RLink}>
                       {row.regID}
                     </Link>
+                     {/* <Link to={`/bloodbank/profile`+row.id} component={RLink}>
+                      {row.regID}
+                    </Link> */}
                   </TableCell>
                   <TableCell align="right">{row.name}</TableCell>
                   <TableCell align="right">{row.mobile}</TableCell>

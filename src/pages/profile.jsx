@@ -12,6 +12,7 @@ import PostEditForm from "../components/profile-edit-form";
 import AddressEditForm from "../components/user-address-form";
 import { useParams } from "react-router";
 import { Route, useHistory } from "react-router";
+import Repository from "./bloodbankprofilerepository";
 
 const ProfilePage = props => {
   const history = useHistory();
@@ -22,9 +23,9 @@ const ProfilePage = props => {
   const [posterror, handlePostError] = useState({});
   const [open, handleOpen] = useState(false);
   const [openAddress, handleAddressForm] = useState(false);
- // const token = localStorage.getItem("token");
- const [response, error, waiting] = useAxios(`/account/profile/${id}`);
-  //const [response, error, waiting] = useAxios(`/info/${token}`);
+  const token = localStorage.getItem("token");
+ //const [response, error, waiting] = useAxios(`/account/profile/${id}`);
+  const [response, error, waiting] = useAxios("account/profile/"+token);
   const [address, errorAdd, waitingAdd] = useAxios(`/user/address/${id}`);
 
   useEffect(() => {
@@ -42,11 +43,32 @@ const ProfilePage = props => {
           }
         });
     }
+
     // if(userInfo.id!=response.id){
     //   handlePostError(({ open: true, severity: "error", message: "You are trying to access invalid page" }));
     //   // history.push("/errorpage")
     // }
   }, [response]);
+
+  // useEffect(() => {
+  //   // if (!localStorage.getItem("token")) {
+  //   //   history.push("/signin");
+  //   // }
+  //   //else {
+  //     if (Object.keys(userInfo).length === 0) {
+  //       axios.get("/account/info/" + localStorage.getItem("token"))
+  //         .then(res => res.data)
+  //         .then(data => {
+  //           let {name, email, username, id, enabled, authorities: [...authority] } = data;
+  //           authority = authority[0].authority;
+  //           dispatch(setUserDetails({name, email, username, id, enabled, authority }));
+  //           return data;
+  //         })
+  //         .catch(err => console.log(err));
+  //     }
+  //   },
+  // //},
+  //  [history, dispatch, userInfo]);
 
   return (
     <Container maxWidth={"lg"}>
@@ -138,7 +160,17 @@ const ProfilePage = props => {
           ))
         }
       </Grid>
+
+
+      
+
+
+      {/* <Repository/> */}
+
+      
     </Container>
+
+    
   );
 };
 

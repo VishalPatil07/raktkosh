@@ -178,9 +178,9 @@ const CampForm = props => {
               fullWidth
               name="campDate"
               id="campDate"
-              label="CampDate"
+              label="Camp Date"
               type="date"
-               className={classes.textField}
+              //  className={classes.textField}
               error={errors.campDate !== undefined}
               // InputLabelProps={{
               //   shrink: true,

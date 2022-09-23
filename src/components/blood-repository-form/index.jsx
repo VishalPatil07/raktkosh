@@ -7,12 +7,14 @@ import { Alert } from "@material-ui/lab";
 import { useState, forwardRef } from 'react';
 import axios from "../../config/axios.config";
 import useStyles from "../../styles/components/blood-bank-form";
+import { useHistory } from "react-router-dom";
 
 const Transition = forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 const BloodRepositoryForm = props => {
+  const history = useHistory();
   const classes = useStyles();
   const [form, handleForm] = useState({
     type: "",
@@ -52,6 +54,9 @@ const BloodRepositoryForm = props => {
       axios.post(`/bloodrepo/${props.id}`, form)
         .then(res => {
           handleResponse(res => ({ ...res, severity: "success", message: "Blood Repository Added Successfully" }));
+          // history.goBack()
+         // history.push()
+        history.push(`/bloodbank/${props.id}`)
         })
         .catch(err => {
           handleResponse(res => ({ ...res, severity: "error", message: "Failed To Add Blood Repository" }));

@@ -47,8 +47,8 @@ const MainPage = () => {
   };
   const pages = [
     {pagename: 'Home', link: "/home", component: <Home />},
-    {pagename: 'Profile', link: `/profile/${userInfo.id}`, component: <AccountCircle />},
-   //{pagename: 'Profile', link: `/info/${localStorage.getItem("token")}`, component: <AccountCircle />},
+   // {pagename: 'Profile', link: `/profile/${userInfo.id}`, component: <AccountCircle />},
+   {pagename: 'Profile', link: "/profile/", component: <AccountCircle />},
     {pagename: 'Post', link: "/post", component: <PostAdd />},
     {pagename: 'Blood Bank', link: "/bloodbank", component: <LocalHospital />},
     
@@ -84,9 +84,9 @@ const MainPage = () => {
         axios.get("/account/info/" + localStorage.getItem("token"))
           .then(res => res.data)
           .then(data => {
-            let {fullname, email, username, id, enabled, authorities: [...authority] } = data;
+            let {name, email, username, id, enabled, authorities: [...authority] } = data;
             authority = authority[0].authority;
-            dispatch(setUserDetails({fullname, email, username, id, enabled, authority }));
+            dispatch(setUserDetails({name, email, username, id, enabled, authority }));
             return data;
           })
           .catch(err => console.log(err));
@@ -206,12 +206,12 @@ const MainPage = () => {
         <Route path="/home">
           <HomePage />
         </Route>
-        <Route path="/profile/:id">
-          <ProfilePage />
-        </Route>
-        {/* <Route path="/info/:token">
+        {/* <Route path="/profile/:id">
           <ProfilePage />
         </Route> */}
+        <Route path="/profile/">
+          <ProfilePage />
+        </Route>
         <Route path="/post">
           <PostPage />
         </Route>
@@ -221,6 +221,9 @@ const MainPage = () => {
         <Route path="/bloodbank/:id">
           <BloodBankDetails />
         </Route>
+        {/* <Route path="/bloodbank/profile/:id">
+          <BloodBankDetails />
+        </Route> */}
         <Route path="/showProfile/:id">
           <ShowProfile />
         </Route>

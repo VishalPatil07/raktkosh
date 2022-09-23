@@ -46,7 +46,7 @@ const ProfilePost = ({ deletable, antigen, createdOn, id, postCategory, type, us
             {userId.fullname}
           </Typography>
           <Typography variant="h5" component="h2" className={classes.typo}>
-            {postCategory === "DONOR" ? "Available" : "Looging"} for {type}{antigen === "POSITIVE" ? "+" : "-"} blood
+            {postCategory === "DONOR" ? "Available" : "Looking"} for {type}{antigen === "POSITIVE" ? "+" : "-"} blood
           </Typography>
           
           <Divider />

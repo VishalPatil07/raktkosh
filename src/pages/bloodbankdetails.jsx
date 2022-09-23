@@ -38,6 +38,7 @@ const BloodBankDetails = (props) => {
   const history = useHistory();
   const location = useLocation();
   const [data, error, waiting] = useAxios(`/bloodbank/${id}`);
+ //const [data, error, waiting] = useAxios(`/bloodbank/profile`+id);
   const [repo, handleRepo] = useState([]);
   const [open, handleOpen] = useState(false);
   const classes = useStyles();
@@ -53,7 +54,10 @@ const BloodBankDetails = (props) => {
         .get(`/bloodrepo/${data.id}`)
         .then((res) => handleRepo(res.data))
         .catch((err) => console.log(err));
+       // history.push(location.pathname);
+       
     }
+    //history.push("")
   }, [data]);
 
   const handleDelete = (repoID) => {
@@ -91,7 +95,7 @@ const BloodBankDetails = (props) => {
           id={data.id}
           handleClose={() => {
             handleOpen(false);
-            history.push("./bloodbank/");
+            //history.push("/bloodbank/");
           }}
         />
       )}
@@ -158,8 +162,10 @@ const BloodBankDetails = (props) => {
                       <TableCell align="center">{row.id.antigen}</TableCell>
                       <TableCell align="center">{row.availability}</TableCell>
 
-
-                      {(userInfo.authority === "ADMIN" || userInfo.authority === "BLOOD_BANK") &&  (
+{/* {(userInfo.id==data.id)&&(
+  
+)} */}
+                      {(userInfo.authority === "ADMIN" ||userInfo.id===data.id) &&  (
                        <TableCell align="center">
 
                           <IconButton aria-label="delete" color="secondary" onClick={() => handleDelete({
@@ -169,7 +175,8 @@ const BloodBankDetails = (props) => {
                             <Delete />
                           </IconButton>
 
-                        </TableCell>)}
+                        </TableCell>
+                        )}
 {/* 
                       <Typography component="h1" className={classes.title}>
                         Registerd Blood Banks
